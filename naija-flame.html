@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NaijaFlame 🔥 — Real Nigerian Fast Food, Lagos</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#080808;--surface:#111;--card:#1a1a1a;--card2:#222;
+  --gold:#D4A017;--gold2:#F0C040;--red:#8B1A1A;--red2:#C0392B;
+  --white:#F7F2EA;--muted:#7a7a7a;--border:#252525;
+  --F:Space Grotesk,sans-serif;--B:Inter,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--B);overflow-x:hidden}
+img{display:block;width:100%;object-fit:cover}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:68px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;
+  background:rgba(8,8,8,0.88);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition:background .3s;
+}
+.logo{font-family:var(--F);font-size:1.45rem;font-weight:800;letter-spacing:-.02em;color:var(--gold);text-decoration:none}
+.logo em{color:var(--red2);font-style:normal}
+.nav-links{list-style:none;display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold)!important;color:var(--black)!important;padding:.45rem 1.1rem;border-radius:5px;font-weight:700!important}
+.nav-cta:hover{background:var(--gold2)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s}
+
+/* ── HERO ── */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  overflow:hidden;padding:80px 5% 60px;
+}
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  filter:brightness(.28) saturate(1.2);
+  transform:scale(1.04);
+  animation:heroZoom 18s ease-in-out infinite alternate;
+}
+@keyframes heroZoom{from{transform:scale(1.04)}to{transform:scale(1.12)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(8,8,8,.85) 0%,rgba(139,26,26,.25) 50%,rgba(8,8,8,.9) 100%)}
+.hero-content{position:relative;z-index:2;max-width:860px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:rgba(212,160,23,.15);border:1px solid rgba(212,160,23,.4);
+  color:var(--gold);font-size:.72rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:.38rem .95rem;border-radius:100px;
+  margin-bottom:1.5rem;animation:fadeD .6s ease both;
+}
+.hero-title{
+  font-family:var(--F);font-size:clamp(3rem,9vw,7rem);font-weight:800;
+  line-height:.92;letter-spacing:-.04em;margin-bottom:1.4rem;
+  animation:fadeU .7s .1s ease both;
+}
+.hero-title .g{color:var(--gold)}
+.hero-title .r{color:var(--red2)}
+.hero-sub{font-size:1.1rem;color:rgba(247,242,234,.7);max-width:520px;margin-bottom:2.5rem;line-height:1.75;animation:fadeU .7s .2s ease both}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeU .7s .3s ease both}
+.btn{font-family:var(--F);font-weight:700;font-size:.9rem;padding:.85rem 2rem;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;border:none}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;flex-wrap:wrap;animation:fadeU .7s .45s ease both}
+.stat .n{font-family:var(--F);font-size:2.2rem;font-weight:800;color:var(--gold)}
+.stat .l{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* ── SECTION BASE ── */
+section{padding:96px 5%}
+.label{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.sec-title{font-family:var(--F);font-size:clamp(1.8rem,4vw,3.2rem);font-weight:800;letter-spacing:-.025em;line-height:1.05;margin-bottom:.9rem}
+.sec-sub{color:var(--muted);font-size:.95rem;max-width:480px;line-height:1.75}
+.sec-head{margin-bottom:3rem}
+
+/* scroll fade */
+.fi{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
+.fi.on{opacity:1;transform:none}
+
+/* ── ABOUT STRIP ── */
+.about-strip{
+  background:var(--surface);padding:0;
+  display:grid;grid-template-columns:1fr 1fr;min-height:480px;
+}
+.about-img{position:relative;overflow:hidden;min-height:320px}
+.about-img img{height:100%;object-fit:cover;transition:transform .6s ease}
+.about-img:hover img{transform:scale(1.04)}
+.about-body{padding:64px 5%;display:flex;flex-direction:column;justify-content:center;gap:1.25rem}
+.about-body p{font-size:.95rem;color:rgba(247,242,234,.65);line-height:1.8}
+.about-pills{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.5rem}
+.pill{background:var(--card2);border:1px solid var(--border);color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:.05em;padding:.35rem .85rem;border-radius:100px}
+.pill.hot{border-color:rgba(192,57,43,.5);color:var(--red2)}
+.pill.gold{border-color:rgba(212,160,23,.4);color:var(--gold)}
+
+/* ── MENU ── */
+#menu{background:var(--black)}
+.menu-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.tab{background:transparent;border:1px solid var(--border);color:var(--muted);font-family:var(--F);font-size:.8rem;font-weight:600;padding:.48rem 1.2rem;border-radius:100px;cursor:pointer;transition:all .2s;letter-spacing:.04em}
+.tab:hover,.tab.on{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.5rem}
+.mcard{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.mcard:hover{transform:translateY(-7px);border-color:var(--gold);box-shadow:0 16px 48px rgba(212,160,23,.13)}
+.mcard-img{height:190px;overflow:hidden;position:relative;background:#1c1c1c}
+.mcard-img img{height:100%;transition:transform .4s ease}
+.mcard:hover .mcard-img img{transform:scale(1.07)}
+.mcard-img .badge{
+  position:absolute;top:.75rem;left:.75rem;
+  background:rgba(8,8,8,.8);backdrop-filter:blur(8px);
+  border:1px solid var(--border);color:var(--gold);
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;
+  padding:.28rem .7rem;border-radius:100px;
+}
+.mcard-body{padding:1.1rem 1.2rem 1.3rem}
+.mcard-name{font-family:var(--F);font-size:1.05rem;font-weight:700;margin-bottom:.3rem}
+.mcard-desc{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:1rem}
+.mcard-foot{display:flex;align-items:center;justify-content:space-between}
+.price{font-family:var(--F);font-size:1.15rem;font-weight:800;color:var(--gold)}
+.add-btn{
+  background:var(--red2);color:#fff;border:none;border-radius:7px;
+  padding:.42rem 1rem;font-size:.78rem;font-weight:700;cursor:pointer;
+  font-family:var(--F);transition:background .2s,transform .15s;
+}
+.add-btn:hover{background:#e74c3c;transform:scale(1.06)}
+
+/* ── GALLERY ── */
+#gallery{background:var(--surface);padding-bottom:80px}
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:auto auto;
+  gap:8px;
+}
+.gal-item{
+  position:relative;overflow:hidden;border-radius:8px;
+  cursor:pointer;background:var(--card);
+  border:1px solid var(--border);
+}
+.gal-item img{height:220px;transition:transform .4s ease}
+.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gal-item:nth-child(1) img{height:100%;min-height:450px}
+.gal-item:hover img{transform:scale(1.07)}
+.gal-overlay{
+  position:absolute;inset:0;
+  background:rgba(0,0,0,0);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s;
+}
+.gal-item:hover .gal-overlay{background:rgba(0,0,0,.45)}
+.gal-overlay svg{opacity:0;transform:scale(.7);transition:all .3s;color:#fff;width:36px;height:36px}
+.gal-item:hover .gal-overlay svg{opacity:1;transform:scale(1)}
+
+/* Lightbox */
+.lb{display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.96);align-items:center;justify-content:center;flex-direction:column;gap:1rem}
+.lb.on{display:flex}
+.lb img{max-width:90vw;max-height:80vh;object-fit:contain;border-radius:8px;animation:zIn .3s ease}
+@keyframes zIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:none}}
+.lb-close{position:absolute;top:1.5rem;right:1.5rem;background:none;border:1px solid var(--border);color:var(--white);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
+.lb-close:hover{border-color:var(--gold);color:var(--gold)}
+.lb-nav{display:flex;gap:1rem;margin-top:.5rem}
+.lb-nav button{background:rgba(255,255,255,.1);border:1px solid var(--border);color:var(--white);padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:var(--F);font-weight:600;transition:background .2s}
+.lb-nav button:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+
+/* ── QUOTE BANNER ── */
+#reviews{
+  background:linear-gradient(135deg,#110505 0%,#2a0808 40%,#110505 100%);
+  text-align:center;padding:80px 5%;
+  border-top:1px solid rgba(139,26,26,.3);border-bottom:1px solid rgba(139,26,26,.3);
+}
+.stars{color:var(--gold);font-size:1.4rem;letter-spacing:.12em;margin-bottom:.9rem}
+.quote{font-family:var(--F);font-size:clamp(1.3rem,2.8vw,2.1rem);font-weight:700;line-height:1.35;max-width:720px;margin:0 auto 1.5rem;color:var(--white)}
+.quote::before{content:'\201C';color:var(--gold);font-size:1.6em;vertical-align:-.3em;margin-right:.05em}
+.quote::after{content:'\201D';color:var(--gold);font-size:1.6em;vertical-align:-.3em;margin-left:.05em}
+.quote-author{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+
+/* ── ORDER ── */
+#order{background:var(--surface)}
+.order-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.order-options{display:flex;flex-direction:column;gap:.85rem;margin-top:1.75rem}
+.oopt{
+  display:flex;align-items:center;gap:1.1rem;
+  background:var(--card);border:1px solid var(--border);border-radius:11px;
+  padding:1.1rem 1.3rem;cursor:pointer;text-decoration:none;color:var(--white);
+  transition:border-color .2s,transform .2s;
+}
+.oopt:hover{border-color:var(--gold);transform:translateX(5px)}
+.oopt-icon{font-size:1.9rem;flex-shrink:0;width:46px;text-align:center}
+.oopt-title{font-family:var(--F);font-weight:700;font-size:.95rem}
+.oopt-desc{font-size:.78rem;color:var(--muted)}
+.hours-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:2rem;overflow:hidden}
+.hours-title{font-family:var(--F);font-weight:700;font-size:1rem;color:var(--gold);margin-bottom:1.25rem;display:flex;align-items:center;gap:.5rem}
+.hr-row{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.hr-row:last-child{border-bottom:none}
+.hr-row .d{color:var(--muted)}
+.hr-row .t{font-weight:600;color:var(--gold)}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#27ae60;margin-right:.4rem;box-shadow:0 0 0 3px rgba(39,174,96,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(39,174,96,.2)}50%{box-shadow:0 0 0 6px rgba(39,174,96,.05)}}
+
+/* ── CONTACT ── */
+#contact{background:var(--black)}
+.contact-wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:start}
+.ci{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.4rem}
+.ci-icon{font-size:1.3rem;width:36px;flex-shrink:0;margin-top:.1rem}
+.ci-label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.ci-val{font-size:.92rem;line-height:1.5;color:var(--white)}
+.socials{display:flex;gap:.6rem;margin-top:.25rem}
+.soc{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:9px;border:1px solid var(--border);
+  background:var(--card);color:var(--muted);font-family:var(--F);
+  font-size:.72rem;font-weight:700;text-decoration:none;
+  transition:border-color .2s,color .2s,transform .2s;
+}
+.soc:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.map-card{
+  border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  position:relative;background:var(--card);
+}
+.map-card img{height:300px;object-fit:cover;filter:saturate(.8) brightness(.85)}
+.map-pin{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--gold);color:var(--black);font-family:var(--F);
+  font-weight:700;font-size:.8rem;padding:.5rem 1rem;border-radius:100px;
+  white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.5);
+  display:flex;align-items:center;gap:.35rem;
+}
+.map-open{
+  position:absolute;bottom:1rem;right:1rem;
+  background:rgba(8,8,8,.85);backdrop-filter:blur(8px);
+  color:var(--white);font-family:var(--F);font-size:.78rem;font-weight:600;
+  padding:.45rem .9rem;border-radius:8px;border:1px solid var(--border);
+  text-decoration:none;transition:border-color .2s;
+}
+.map-open:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:1.8rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+}
+footer .logo{font-size:1.2rem}
+footer .copy{font-size:.75rem;color:var(--muted)}
+
+/* ── FLOATING BTNS ── */
+.cart-float{
+  position:fixed;bottom:6rem;right:1.5rem;z-index:900;
+  background:var(--gold);color:var(--black);border:none;border-radius:50px;
+  padding:.75rem 1.3rem;font-family:var(--F);font-weight:800;font-size:.88rem;
+  cursor:pointer;display:flex;align-items:center;gap:.5rem;
+  box-shadow:0 6px 28px rgba(212,160,23,.4);
+  animation:slideU .5s 1s ease both;transition:background .2s,transform .2s;
+}
+.cart-float:hover{background:var(--gold2);transform:translateY(-3px)}
+.cbadge{
+  background:var(--red2);color:#fff;border-radius:50%;
+  width:20px;height:20px;font-size:.68rem;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.wa-btn{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+  background:#25D366;color:#fff;border:none;border-radius:50px;
+  padding:.75rem 1.2rem;font-family:var(--F);font-weight:700;font-size:.82rem;
+  cursor:pointer;text-decoration:none;display:flex;align-items:center;gap:.5rem;
+  box-shadow:0 4px 20px rgba(37,211,102,.35);
+  animation:slideU .5s 1.1s ease both;transition:background .2s,transform .2s;
+}
+.wa-btn:hover{background:#1eba57;transform:translateY(-3px)}
+
+/* ── CART DRAWER ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:1400;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.on{opacity:1;pointer-events:all}
+.cart-drawer{
+  position:fixed;top:0;right:-420px;width:400px;max-width:95vw;height:100vh;
+  background:var(--surface);border-left:1px solid var(--border);
+  z-index:1500;display:flex;flex-direction:column;
+  transition:right .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;
+}
+.cart-drawer.on{right:0}
+.cdh{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 1.5rem;border-bottom:1px solid var(--border);
+  position:sticky;top:0;background:var(--surface);z-index:2;
+}
+.cdh h2{font-family:var(--F);font-size:1.15rem;font-weight:700}
+.xbtn{background:none;border:1px solid var(--border);color:var(--white);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.xbtn:hover{border-color:var(--gold);color:var(--gold)}
+.citems{flex:1;padding:1.2rem 1.5rem;display:flex;flex-direction:column;gap:.7rem}
+.citem{display:flex;gap:.9rem;align-items:center;padding:.85rem;background:var(--card);border-radius:10px;border:1px solid var(--border)}
+.citem-img{width:54px;height:54px;border-radius:8px;object-fit:cover;flex-shrink:0;background:var(--card2)}
+.citem-info{flex:1}
+.citem-name{font-family:var(--F);font-weight:600;font-size:.88rem;margin-bottom:.15rem}
+.citem-price{color:var(--gold);font-size:.82rem;font-weight:700}
+.cqty{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.qbtn{background:var(--border);border:none;color:var(--white);width:28px;height:28px;border-radius:5px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.qbtn:hover{background:var(--gold);color:var(--black)}
+.qnum{font-family:var(--F);font-weight:700;font-size:.88rem;min-width:20px;text-align:center}
+.cempty{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.cempty .ei{font-size:3rem;margin-bottom:.75rem;display:block}
+.cfooter{padding:1.2rem 1.5rem;border-top:1px solid var(--border);position:sticky;bottom:0;background:var(--surface)}
+.ctotal{display:flex;justify-content:space-between;margin-bottom:1rem;font-family:var(--F);font-size:1.05rem;font-weight:700}
+.ctotal-p{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:9rem;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--black);font-family:var(--F);font-weight:700;
+  font-size:.82rem;padding:.55rem 1.2rem;border-radius:100px;
+  z-index:9999;opacity:0;pointer-events:none;white-space:nowrap;
+  transition:opacity .3s;box-shadow:0 4px 20px rgba(212,160,23,.4);
+}
+
+/* ── ANIM ── */
+@keyframes fadeD{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes fadeU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes slideU{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .about-strip,.order-grid,.contact-wrap{grid-template-columns:1fr}
+  .about-img{min-height:260px}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-item:nth-child(1){grid-column:span 2;grid-row:span 1}
+  .gal-item:nth-child(1) img{min-height:240px}
+}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:rgba(8,8,8,.98);padding:1.5rem 5%;border-bottom:1px solid var(--border);gap:1.3rem}
+  .nav-links.on{display:flex}
+  .hamburger{display:flex}
+  .hero-stats{gap:1.5rem}
+  .menu-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;text-align:center}
+}
+@media(max-width:480px){
+  .menu-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .gal-item:nth-child(1){grid-column:span 1}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">Naija<em>Flame</em> 🔥</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#order" class="nav-cta">Order Now</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🇳🇬 Victoria Island, Lagos · Open Daily</div>
+    <h1 class="hero-title">
+      The <span class="g">Boldest</span><br>Nigerian<br><span class="r">Fast Food</span><br>in Lagos.
+    </h1>
+    <p class="hero-sub">Suya. Jollof. Pepper. Heat. Every plate is a love letter to Lagos — made fast, made fierce, made for you.</p>
+    <div class="hero-actions">
+      <a href="#menu" class="btn btn-gold">🍽️ View Full Menu</a>
+      <a href="#order" class="btn btn-ghost">🛵 Order Delivery</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="n">50+</div><div class="l">Naija Dishes</div></div>
+      <div class="stat"><div class="n">4.9★</div><div class="l">Customer Rating</div></div>
+      <div class="stat"><div class="n">10k+</div><div class="l">Orders Served</div></div>
+      <div class="stat"><div class="n">20min</div><div class="l">Avg Delivery</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=85" alt="NaijaFlame Restaurant" loading="lazy"/>
+  </div>
+  <div class="about-body fi">
+    <div class="label">Our Story</div>
+    <h2 class="sec-title" style="font-size:clamp(1.5rem,3vw,2.4rem)">Born on the Streets of Lagos.</h2>
+    <p>NaijaFlame started with one pot of Jollof, one suya stick, and one belief: Nigerian fast food deserves to be legendary. No shortcuts. No compromise. Just real flavour, served fast.</p>
+    <p>We source local peppers, smoke our suya over open flame, and cook every pot of Jollof like it's going to a party — because in Lagos, every meal is a celebration.</p>
+    <div class="about-pills">
+      <span class="pill gold">🔥 Open Daily</span>
+      <span class="pill hot">🌶 Spice Lovers Welcome</span>
+      <span class="pill">🛵 Lagos-wide Delivery</span>
+      <span class="pill">🍽️ Dine-In Available</span>
+    </div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="sec-head fi">
+    <div class="label">What We Serve</div>
+    <h2 class="sec-title">The Menu</h2>
+    <p class="sec-sub">From jollof to suya to zobo — every item made fresh, every day.</p>
+  </div>
+  <div class="menu-tabs fi">
+    <button class="tab on" onclick="filterMenu('all',this)">All Items</button>
+    <button class="tab" onclick="filterMenu('rice',this)">🍛 Rice Dishes</button>
+    <button class="tab" onclick="filterMenu('protein',this)">🍖 Protein</button>
+    <button class="tab" onclick="filterMenu('snacks',this)">🟠 Snacks</button>
+    <button class="tab" onclick="filterMenu('drinks',this)">🥤 Drinks</button>
+  </div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-head fi">
+    <div class="label">Food Looks Good Too</div>
+    <h2 class="sec-title">The Gallery</h2>
+    <p class="sec-sub">Every plate is a masterpiece. Don't just take our word for it.</p>
+  </div>
+  <div class="gal-grid fi" id="galGrid"></div>
+</section>
+
+<!-- Lightbox -->
+<div class="lb" id="lb">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <img id="lbImg" src="" alt="Food photo"/>
+  <div class="lb-nav">
+    <button onclick="lbNav(-1)">← Prev</button>
+    <button onclick="lbNav(1)">Next →</button>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="stars fi">★★★★★</div>
+  <blockquote class="quote fi">
+    NaijaFlame is the only fast food in Lagos where the Jollof tastes like Grandma made it — but lands at your door in 20 minutes flat.
+  </blockquote>
+  <p class="quote-author fi">— Adaeze O., Victoria Island · Verified Customer</p>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="order-grid">
+    <div class="fi">
+      <div class="label">Get Your Order</div>
+      <h2 class="sec-title">Delivery &amp; Dine-In</h2>
+      <p class="sec-sub">Hot food, your way. Order online, walk in, or call us — NaijaFlame is always ready.</p>
+      <div class="order-options">
+        <a href="#" class="oopt">
+          <div class="oopt-icon">🛵</div>
+          <div><div class="oopt-title">Order Delivery</div><div class="oopt-desc">Lagos-wide · 20–35 min average delivery time</div></div>
+        </a>
+        <a href="#" class="oopt">
+          <div class="oopt-icon">🍽️</div>
+          <div><div class="oopt-title">Dine-In</div><div class="oopt-desc">Walk in anytime · No reservation needed</div></div>
+        </a>
+        <a href="#" class="oopt">
+          <div class="oopt-icon">📦</div>
+          <div><div class="oopt-title">Takeaway</div><div class="oopt-desc">Order ahead · Ready in under 10 minutes</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="hours-card fi">
+      <div class="hours-title"><span class="status-dot"></span> We're Open Now</div>
+      <div class="hr-row"><span class="d">Monday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Tuesday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Wednesday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Thursday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Friday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Saturday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+      <div class="hr-row"><span class="d">Sunday</span><span class="t">8:00 AM – 10:00 PM</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head fi">
+    <div class="label">Come Find Us</div>
+    <h2 class="sec-title">Visit NaijaFlame</h2>
+  </div>
+  <div class="contact-wrap">
+    <div class="fi">
+      <div class="ci">
+        <div class="ci-icon">📍</div>
+        <div><div class="ci-label">Address</div><div class="ci-val">14 Balogun Street, Victoria Island,<br>Lagos, Nigeria</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📞</div>
+        <div><div class="ci-label">Phone</div><div class="ci-val">+234 801 234 5678</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">✉️</div>
+        <div><div class="ci-label">Email</div><div class="ci-val">hello@naijaflame.ng</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">⏰</div>
+        <div><div class="ci-label">Hours</div><div class="ci-val">Every day · 8:00 AM – 10:00 PM</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📱</div>
+        <div>
+          <div class="ci-label">Follow Us</div>
+          <div class="socials">
+            <a href="#" class="soc" title="Instagram">IG</a>
+            <a href="#" class="soc" title="TikTok">TK</a>
+            <a href="#" class="soc" title="Twitter/X">𝕏</a>
+            <a href="#" class="soc" title="Facebook">FB</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map-card fi">
+      <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=800&q=80" alt="Lagos Nigeria map area" loading="lazy"/>
+      <div class="map-pin">📍 14 Balogun St, Victoria Island</div>
+      <a href="https://maps.google.com/?q=Victoria+Island+Lagos" target="_blank" class="map-open">Open in Google Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="logo">Naija<em>Flame</em> 🔥</a>
+  <div class="copy">© 2024 NaijaFlame. All rights reserved. Lagos, Nigeria.</div>
+</footer>
+
+<!-- Floating Cart -->
+<button class="cart-float" id="cartBtn" onclick="openCart()">
+  🛒 Cart <div class="cbadge" id="cbadge">0</div>
+</button>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/2348012345678?text=Hi%20NaijaFlame!%20I'd%20like%20to%20place%20an%20order%20🔥" target="_blank" class="wa-btn">
+  💬 WhatsApp Us
+</a>
+
+<!-- Cart Overlay & Drawer -->
+<div class="cart-overlay" id="cOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cDrawer">
+  <div class="cdh">
+    <h2>🛒 Your Order</h2>
+    <button class="xbtn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="citems" id="cItems">
+    <div class="cempty"><span class="ei">🍽️</span><p>Nothing here yet.<br>Add something delicious!</p></div>
+  </div>
+  <div id="cFooter" style="display:none">
+    <div class="cfooter">
+      <div class="ctotal"><span>Total</span><span class="ctotal-p" id="cTotal">₦0</span></div>
+      <button class="btn btn-gold" style="width:100%;justify-content:center" onclick="checkout()">Place Order via WhatsApp →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── DATA ──
+const MENU = [
+  {id:1,name:'Jollof Rice Combo',desc:'Party jollof with fried plantain & coleslaw',price:2800,cat:'rice',badge:'🔥 Bestseller',
+   img:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=80'},
+  {id:2,name:'Nigerian Fried Rice',desc:'Fried rice loaded with vegetables, liver & seasoning',price:2500,cat:'rice',badge:'Chef\'s Pick',
+   img:'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=500&q=80'},
+  {id:3,name:'Ofada Rice & Ayamase',desc:'Local ofada in smoky green pepper stew',price:3200,cat:'rice',badge:'🇳🇬 Local Fave',
+   img:'https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=500&q=80'},
+  {id:4,name:'Suya Platter',desc:'Spiced grilled beef skewers with onion & tomato',price:2200,cat:'protein',badge:'🌶️ Spicy',
+   img:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=500&q=80'},
+  {id:5,name:'Peppered Chicken',desc:'Whole fried chicken in rich Naija pepper sauce',price:3500,cat:'protein',badge:'🔥 Hot Pick',
+   img:'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=500&q=80'},
+  {id:6,name:'Asun (Peppered Goat)',desc:'Smoky grilled goat meat, Lagos-style',price:3800,cat:'protein',badge:'Premium',
+   img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=80'},
+  {id:7,name:'Puff Puff (6 pcs)',desc:'Golden fried dough balls, lightly sweetened',price:800,cat:'snacks',badge:'Street Fave',
+   img:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=500&q=80'},
+  {id:8,name:'Akara & Ogi',desc:'Bean cakes with warm pap — the breakfast classic',price:1200,cat:'snacks',badge:'Morning Pick',
+   img:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=500&q=80'},
+  {id:9,name:'Plantain Chips',desc:'Crispy sweet plantain, lightly salted',price:600,cat:'snacks',badge:'Light Bite',
+   img:'https://images.unsplash.com/photo-1601001815894-4bb6c828f96b?auto=format&fit=crop&w=500&q=80'},
+  {id:10,name:'Zobo (500ml)',desc:'Hibiscus punch with ginger & cloves',price:500,cat:'drinks',badge:'Refreshing',
+   img:'https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=500&q=80'},
+  {id:11,name:'Kunu (500ml)',desc:'Traditional grain drink, mildly spiced',price:450,cat:'drinks',badge:'Traditional',
+   img:'https://images.unsplash.com/photo-1474722883778-792e7990302f?auto=format&fit=crop&w=500&q=80'},
+  {id:12,name:'Chilled Chapman',desc:'Classic Nigerian cocktail mix — non-alcoholic',price:700,cat:'drinks',badge:'Party Vibes',
+   img:'https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=500&q=80'},
+];
+
+const GALLERY = [
+  {src:'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=85',alt:'Nigerian food spread'},
+  {src:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=85',alt:'Jollof rice'},
+  {src:'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=85',alt:'Suya skewers'},
+  {src:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=85',alt:'Grilled meat'},
+  {src:'https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=600&q=85',alt:'Peppered chicken'},
+  {src:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=85',alt:'Nigerian snacks'},
+  {src:'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=600&q=85',alt:'Restaurant ambiance'},
+];
+
+// ── GALLERY RENDER ──
+const galGrid = document.getElementById('galGrid');
+GALLERY.forEach((g,i)=>{
+  const d = document.createElement('div');
+  d.className='gal-item';
+  d.innerHTML=`<img src="${g.src}" alt="${g.alt}" loading="lazy"/><div class="gal-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>`;
+  d.onclick=()=>openLb(i);
+  galGrid.appendChild(d);
+});
+
+// ── LIGHTBOX ──
+let lbIdx=0;
+function openLb(i){
+  lbIdx=i;
+  document.getElementById('lbImg').src=GALLERY[i].src;
+  document.getElementById('lb').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLb(){
+  document.getElementById('lb').classList.remove('on');
+  document.body.style.overflow='';
+}
+function lbNav(d){
+  lbIdx=(lbIdx+d+GALLERY.length)%GALLERY.length;
+  document.getElementById('lbImg').src=GALLERY[lbIdx].src;
+}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)closeLb()});
+
+// ── MENU ──
+function fmt(n){return'₦'+n.toLocaleString()}
+function renderMenu(cat){
+  const grid=document.getElementById('menuGrid');
+  const items=cat==='all'?MENU:MENU.filter(i=>i.cat===cat);
+  grid.innerHTML=items.map((it,idx)=>`
+  <div class="mcard fi" style="transition-delay:${idx*0.055}s">
+    <div class="mcard-img">
+      <img src="${it.img}" alt="${it.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div style=\\'display:flex;align-items:center;justify-content:center;height:100%;font-size:3.5rem;color:#555\\'>🍽️</div>'"/>
+      <div class="badge">${it.badge}</div>
+    </div>
+    <div class="mcard-body">
+      <div class="mcard-name">${it.name}</div>
+      <div class="mcard-desc">${it.desc}</div>
+      <div class="mcard-foot">
+        <span class="price">${fmt(it.price)}</span>
+        <button class="add-btn" onclick="addCart(${it.id})">+ Add</button>
+      </div>
+    </div>
+  </div>`).join('');
+  observeFI();
+}
+function filterMenu(cat,btn){
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  renderMenu(cat);
+}
+
+// ── CART ──
+let cart={};
+function addCart(id){
+  cart[id]=(cart[id]||0)+1;
+  updateCartUI();
+  toast('Added to cart 🎉');
+}
+function changeQty(id,d){
+  cart[id]=(cart[id]||0)+d;
+  if(cart[id]<=0)delete cart[id];
+  updateCartUI();
+}
+function updateCartUI(){
+  const total=Object.values(cart).reduce((a,b)=>a+b,0);
+  document.getElementById('cbadge').textContent=total;
+  const itemsEl=document.getElementById('cItems');
+  const footer=document.getElementById('cFooter');
+  if(!total){
+    itemsEl.innerHTML='<div class="cempty"><span class="ei">🍽️</span><p>Nothing here yet.<br>Add something delicious!</p></div>';
+    footer.style.display='none';return;
+  }
+  footer.style.display='block';
+  let grand=0;
+  itemsEl.innerHTML=Object.entries(cart).filter(([,q])=>q>0).map(([id,qty])=>{
+    const it=MENU.find(i=>i.id==id);
+    const sub=it.price*qty;grand+=sub;
+    return`<div class="citem">
+      <img class="citem-img" src="${it.img}" alt="${it.name}" onerror="this.style.display='none'"/>
+      <div class="citem-info"><div class="citem-name">${it.name}</div><div class="citem-price">${fmt(sub)}</div></div>
+      <div class="cqty">
+        <button class="qbtn" onclick="changeQty(${id},-1)">−</button>
+        <span class="qnum">${qty}</span>
+        <button class="qbtn" onclick="changeQty(${id},1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('cTotal').textContent=fmt(grand);
+}
+function openCart(){document.getElementById('cDrawer').classList.add('on');document.getElementById('cOverlay').classList.add('on');document.body.style.overflow='hidden'}
+function closeCart(){document.getElementById('cDrawer').classList.remove('on');document.getElementById('cOverlay').classList.remove('on');document.body.style.overflow=''}
+function checkout(){
+  const items=Object.entries(cart).filter(([,q])=>q>0).map(([id,qty])=>{const it=MENU.find(i=>i.id==id);return`${it.name} x${qty}`;}).join(', ');
+  window.open(`https://wa.me/2348012345678?text=${encodeURIComponent('Hi NaijaFlame! 🔥 I\'d like to order:\n'+items+'\n\nPlease confirm my order, thanks!')},'_blank'`);
+}
+
+// ── TOAST ──
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',2000);
+}
+
+// ── SCROLL FI ──
+function observeFI(){
+  const els=document.querySelectorAll('.fi:not(.on)');
+  const ob=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ob.unobserve(e.target)}});
+  },{threshold:.1});
+  els.forEach(el=>ob.observe(el));
+}
+
+// ── NAV ──
+document.getElementById('ham').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('on'));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('on')));
+
+// ── INIT ──
+renderMenu('all');
+observeFI();
+</script>
+</body>
+</html>
